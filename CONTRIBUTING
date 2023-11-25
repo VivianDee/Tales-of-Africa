@@ -1,0 +1,19 @@
+# RULES THAT GUIDE CONTRIBUTION TO THE PROJECT
+
+- Please make sure the code is working before pusshing it to the repo
+- Make sure you dont break another persons code
+
+### Coding Style/ convention
+ Contributors are expected to use snake case convention.
+
+### Testing the code
+ All the code is expected to be tested using django test files and doc-tests
+
+### Commenting the code
+ Every piece of code should be fully explained using comments. Classes should pass doc-tests
+
+### Indentation
+ The code will use one tab/4-space indentation
+
+### Creating pull requests
+ Pull requests are accepted and please ask a peer to merge it immediately
