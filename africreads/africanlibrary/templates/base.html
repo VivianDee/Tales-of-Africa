@@ -1,0 +1,169 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        nav {
+            background-color: #3498db;
+            overflow: hidden;
+            height: 60px; /* Adjusted height */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 60px; /* Matched line-height to navbar height */
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #297fb8;
+        }
+        
+        .story-container_for_story_page {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-title {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .story-content_for_story_page {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .story-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .story {
+            border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            cursor: pointer;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .story:hover {
+            transform: scale(1.05);
+        }
+
+        .story h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .preview-content {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .story-content {
+            display: none;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            text-align: right;
+            color: #3498db;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+            color: #e74c3c; /* Red color */
+        }
+
+        .author-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 12px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .story-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .story {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'stories' %}">Stories</a></li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

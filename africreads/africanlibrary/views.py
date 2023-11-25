@@ -5,7 +5,7 @@ from .models import Story
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("African Library coming soon")
+    return render(request, 'main.html')
 
 def stories(request):
     """Gets all available stories and their contexts from the database and 
