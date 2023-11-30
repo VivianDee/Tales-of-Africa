@@ -1,8 +1,15 @@
+<!-- templates/main.html -->
+
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
     <h1>Welcome to African Library</h1>
+    <div class="image-container">
+    <img src="{% static 'MapAfricaSize.gif' %}" alt="African Library GIF" class="centered-image">
+    </div>
     <!-- Add more content as needed -->
-      <footer>
+    <footer>
         &copy; 2023 African Library. All rights reserved.
     </footer>
-{% endblock %}    
+{% endblock %}
