@@ -10,7 +10,7 @@
 	    background-image: url('static/africanlibrary/images/thumb_MapAfricaSize.webp');
             padding: 2px;
 	    background-repeat: no-repeat;
-	    background-size: 100vw 100vh;
+	    background-size: 100vw 100%;
         }
 
         header {
@@ -23,14 +23,44 @@
 
 	main {
 	    display: flex;
-	    align-items: center;
-	    justify-content: center;
+	    flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
 	}
 
-	.main-text {
+	.text {
 	    backdrop-filter: blur(5px);
 	    padding: 20px;
 	    padding-top: 30px;
+	    border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+	}
+
+	#sec-1, #sec-2 {
+           width: 48%;
+	   height: 310px;
+	   box-sizing: border-box;
+	   margin-bottom: 20px;
+	   justify-content: center;
+	   align-text: center;
+        }
+
+	#sec-2 {
+	   margin-left: 48%;
+	}
+
+	#sec-3 {
+	   width: 100%;
+	   box-sizing: border-box;
+	}
+
+	@media (max-width: 768px) {
+            #sec-1, #sec-2 {
+                width: 100%;
+            }
 	}
 
         nav {
@@ -59,7 +89,7 @@
             font-weight: bold;
             font-size: 16px;
             padding: 10px;
-	    border-radius: 25px;
+	    border-radius: 8px;
             transition: background-color 0.3s ease-in-out;
         }
 
