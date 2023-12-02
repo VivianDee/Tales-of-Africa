@@ -10,7 +10,7 @@
 	    background-image: url('static/africanlibrary/images/thumb_MapAfricaSize.webp');
             padding: 2px;
 	    background-repeat: no-repeat;
-	    background-size: 100vw 100%;
+	    background-size: 100vw 100vh;
         }
 
         header {
@@ -21,60 +21,44 @@
             font-size: 24px;
         }
 
-	main {
-	    display: flex;
-	    flex-direction: column;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-	}
-
-	.text {
-	    backdrop-filter: blur(5px);
-	    padding: 20px;
-	    padding-top: 30px;
-	    border-radius: 8px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-	}
-
-	#sec-1, #sec-2 {
-           width: 48%;
-	   height: 310px;
-	   box-sizing: border-box;
-	   margin-bottom: 20px;
-	   justify-content: center;
-	   align-text: center;
-        }
-
-	#sec-2 {
-	   margin-left: 48%;
-	}
-
-	#sec-3 {
-	   width: 100%;
-	   box-sizing: border-box;
-	}
-
-	@media (max-width: 768px) {
-            #sec-1, #sec-2 {
-                width: 100%;
-            }
-	}
-
         nav {
             background-color: #666;
+	    display: flex;
+	    justify-content: space-between;
             overflow: hidden;
 	    border-radius: 25px;
             height: 60px; /* Adjusted height */
         }
 
-        nav ul {
+	nav div {
+	    display: flex;
+	}
+
+	nav img {
+	    padding-left: 30px;
+	    transform: scale(0.7);
+	}
+
+        nav h1 {
+	    font-style: Sans-Serif;
+            color: #333;
+            margin: 0;
+	    padding: 15px 0 10px 2px;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflowing text */
+            animation: typing 5s steps(5, 10, 20, end);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: min-content; }
+        }
+
+	nav ul {
             list-style-type: none;
             margin: 0;
-            padding-left: 20px;
-            text-align: left;
+            padding-right: 20px;
+            text-align: right;
             line-height: 60px; /* Matched line-height to navbar height */
         }
 
@@ -221,7 +205,12 @@
     </style>
 </head>
 <body>
+    {% load static %}
     <nav>
+	<div>
+	    <img src="{% static 'africanlibrary/images/book.svg' %}" alt="book-logo">
+	    <h1></h1>
+	</div>
         <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'stories' %}">Stories</a></li>
@@ -230,6 +219,28 @@
     <main>
         {% block content %}{% endblock %}
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            animateTyping();
+        });
+
+        function animateTyping() {
+            const h1 = document.querySelector('nav h1');
+            h1.innerHTML = ''; // Clear the text
+            const text = 'The Tales Of Africa'; // Replace with your desired text
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < text.length) {
+                    h1.innerHTML += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100); // Adjust typing speed (milliseconds)
+                }
+            }
+
+            type();
+        }
+    </script>
 </body>
 <footer>
     &copy; 2023 African Library. All rights reserved.
