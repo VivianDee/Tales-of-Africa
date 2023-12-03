@@ -3,6 +3,7 @@
 
 {% block content %}
     <!-- Your additional content goes here -->
+    {% if stories %}
     <div class="story-container">
         {% for story in stories %}
             <div class="story">
@@ -17,6 +18,9 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+        <p id="search_not_found">No matching stories found.</p>
+    {% endif %}
 
     <footer>
         &copy; 2023 African Library. All rights reserved.
