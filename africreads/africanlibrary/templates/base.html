@@ -6,13 +6,15 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
-            padding: 0;
+	    background-image: url('static/africanlibrary/images/thumb_MapAfricaSize.webp');
+            padding: 2px;
+	    background-repeat: no-repeat;
+	    background-size: 100vw 100vh;
         }
 
         header {
-            background-color: #333;
+	    background-color: #333;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -21,15 +23,42 @@
 
         nav {
             background-color: #666;
+	    display: flex;
+	    justify-content: space-between;
             overflow: hidden;
+	    border-radius: 25px;
             height: 60px; /* Adjusted height */
         }
 
-        nav ul {
+	nav div {
+	    display: flex;
+	}
+
+	nav img {
+	    padding-left: 30px;
+	    transform: scale(0.7);
+	}
+
+        nav h1 {
+	    font-style: Sans-Serif;
+            color: #333;
+            margin: 0;
+	    padding: 15px 0 10px 2px;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflowing text */
+            animation: typing 5s steps(5, 10, 20, end);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: min-content; }
+        }
+
+	nav ul {
             list-style-type: none;
             margin: 0;
-            padding: 0;
-            text-align: center;
+            padding-right: 20px;
+            text-align: right;
             line-height: 60px; /* Matched line-height to navbar height */
         }
 
@@ -44,6 +73,7 @@
             font-weight: bold;
             font-size: 16px;
             padding: 10px;
+	    border-radius: 8px;
             transition: background-color 0.3s ease-in-out;
         }
 
@@ -117,7 +147,6 @@
         .image-container {
             text-align: center; /* Center the image horizontally */
             margin: 10px 0;     /* Add some margin for spacing */
-            background-color: #f5f5f5; 
         }
 
         .centered-image {
@@ -150,10 +179,16 @@
         }
 
         footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
+	    position: fixed;
+            background: -webkit-linear-gradient(0deg,rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+	    backdrop-filter: blur(5px);
+	    color: #fff;
             text-align: center;
+	    bottom: 0;
+	    width: 100%;
         }
 
         /* Responsive Design */
@@ -167,15 +202,87 @@
                 width: 80%;
             }
         }
+
+	.search {
+	    margin: 15px;
+	}
+
+	.search input {
+	    border-radius: 8px;
+	    color: #666;
+	    width: 300px;
+	    background-color: white;
+	}
+
+	.search button {
+	    color: #333;
+	    border-color: #333;
+            border-radius: 8px;
+	    background-color: #666;
+        }
+
+	#search_not_found {
+	    font-size: 30px;
+	    font-weight: bold;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
     </style>
 </head>
 <body>
+    {% load static %}
     <nav>
+	<div class="search">
+	    <input type="text" id="searchInput" placeholder="Search..." />
+            <button onclick="search()">Search</button>
+        </div>
+	<div>
+	    <img src="{% static 'africanlibrary/images/book.svg' %}" alt="book-logo">
+	    <h1></h1>
+	</div>
         <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'stories' %}">Stories</a></li>
         </ul>
     </nav>
-    {% block content %}{% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            animateTyping();
+        });
+
+        function animateTyping() {
+            const h1 = document.querySelector('nav h1');
+            h1.innerHTML = ''; // Clear the text
+            const text = 'The Tales Of Africa'; // Replace with your desired text
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < text.length) {
+                    h1.innerHTML += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100); // Adjust typing speed (milliseconds)
+                }
+            }
+
+            type();
+        }
+
+        function search() {
+            var searchTerm = document.getElementById('searchInput').value;
+
+            var url = '/search?query=' + encodeURIComponent(searchTerm);
+
+            window.location.href = url;
+        }
+    </script>
 </body>
+<footer>
+    &copy; 2023 African Library. All rights reserved.
+</footer>
 </html>
