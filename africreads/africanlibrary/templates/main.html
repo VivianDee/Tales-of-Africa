@@ -1,22 +1,42 @@
 <!-- templates/main.html -->
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-    <div class="text" id="sec-1">
-        <h1><span> Welcome To The Tales Of Africa</span></h1>
-	<p>Explore the vibrant history of Africa through captivating stories. Each tale is a journey, each page a chapter in the epic story of a remarkable continent.</p>
-        <img src="{% static 'africanlibrary/images/thumb_MapAfricaSize.webp' %}" alt="thumbnail" class="centered-image"> 
-    </div>
-    <div class="text" id="sec-2">
-	<h1><span>Discover Ancient Stories</span></h1>
-	<p>Unearth the past with stories from across Africa. From the empires of Mali and Ghana to the vibrant cultures of East Africa.</p>
-         <img src="{% static 'africanlibrary/images/thumb_MapAfricaSize.webp' %}" alt="thumbnail" class="centered-image">
-    </div>
-    <div class="text" id="sec-3">
-	<h2 class="text">We are more than a library. We are a gateway to the past!!!</h2>
+    
+       <section class="about-section" style="background-image: url('{% static 'africanlibrary/images/thumb_MapAfricaSize.webp' %}')">
+ <div class="about-content">
+            <h1>About African Library</h1>
+	    <p><strong>Welcome to the African Library, a digital haven dedicated to preserving and celebrating the extraordinary tapestry of Africa's diverse cultures, histories, and narratives. Rooted in a profound appreciation for the richness and uniqueness of the continent, the African Library is more than just a digital repository; it is a dynamic platform committed to fostering cultural understanding, education, and connection.</strong></p>
+            <a href="{% url 'stories' %}" class="explore-button">Explore Stories</a>
+        </div>
+    </section>
 
-    </div>  
-    <!-- Add more content as needed -->
+    <div class="flex-container">
+        <!-- Include other sections here -->
+        <div class="flex-item mission-section">
+            <h2>Our Mission</h2>
+            <p>Our mission is to provide a digital sanctuary where the captivating stories of Africa can thrive, reaching global audiences and bridging cultural gaps. Through meticulous curation and cutting-edge technology, we aim to create an immersive experience that not only educates but also inspires a deep appreciation for the heritage and contributions of African communities.</p>
+        </div>
+        <div class="flex-item essence-section">
+            <h2>The Essence of Africa's Stories</h2>
+            <p>Africa is a continent of boundless diversity, from the ancient civilizations of the Nile Valley to the vibrant traditions of its many ethnic groups. The African Library seeks to encapsulate the essence of this diversity by curating a vast collection of stories that traverse time, geography, and cultural nuances. These narratives, handed down through generations, reflect the resilience, wisdom, and creativity that define Africa's narrative tapestry.</p>
+        </div>
+        <div class="flex-item technology-section">
+            <h2>State-of-the-Art Technology</h2>
+            <p>At the core of the African Library is a commitment to harnessing the power of technology to make the exploration of African stories seamless and engaging. Our platform employs state-of-the-art algorithms for intuitive navigation, ensuring that users can effortlessly uncover the richness of African history and culture with just a few clicks.</p>
+        </div>
+        <div class="flex-item community-section">
+            <h2>Community-Centric Approach</h2>
+            <p>The African Library thrives on community engagement. We invite users from around the world to contribute their own stories, folklore, and perspectives, creating a dynamic and living archive. By fostering collaboration, we aspire to build a global community passionate about preserving and sharing the diverse narratives that make Africa unique.</p>
+        </div>
+        <div class="flex-item education-section">
+            <h2>Educational Resource and Cultural Hub</h2>
+            <p>Beyond storytelling, the African Library serves as an invaluable educational resource. Students, scholars, and enthusiasts can delve into historical contexts, explore cultural nuances, and gain a comprehensive understanding of the social dynamics that have shaped the continent. We envision the African Library as a cultural hub that not only informs but also sparks curiosity and dialogue.</p>
+        </div>
+        <div class="flex-item journey-section">
+            <h2>Join Us on this Journey</h2>
+            <p>Whether you are a history enthusiast, a student eager to learn, or someone curious about the world, the African Library invites you to join us on this journey of exploration and celebration. Together, let us discover the beauty, resilience, and diversity that define Africa's narrative. Explore the stories, connect with the cultures, and become a part of the global community that cherishes and promotes the rich heritage of the African continent. Welcome to the African Library!</p>
+        </div>
+    </div>
 {% endblock %}

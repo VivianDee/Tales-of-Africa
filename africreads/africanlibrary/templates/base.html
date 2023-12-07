@@ -7,14 +7,17 @@
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
-	    background-color: #fff;
+            background-color: #fff;
             padding: 2px;
-	    background-repeat: no-repeat;
-	    background-size: 100vw 100vh;
+            background-repeat: no-repeat;
+            background-size: 100vw 100vh;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the content takes at least the full height of the viewport */
         }
 
         header {
-	    background-color: #333;
+            background-color: #333;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -23,27 +26,27 @@
 
         nav {
             background-color: #666;
-	    display: flex;
-	    justify-content: space-between;
+            display: flex;
+            justify-content: space-between;
             overflow: hidden;
-	    border-radius: 25px;
+            border-radius: 25px;
             height: 60px; /* Adjusted height */
         }
 
-	nav div {
-	    display: flex;
-	}
+        nav div {
+            display: flex;
+        }
 
-	nav img {
-	    padding-left: 30px;
-	    transform: scale(0.7);
-	}
+        nav img {
+            padding-left: 30px;
+            transform: scale(0.7);
+        }
 
         nav h1 {
-	    font-style: Sans-Serif;
+            font-style: Sans-Serif;
             color: #333;
             margin: 0;
-	    padding: 15px 0 10px 2px;
+            padding: 15px 0 10px 2px;
             white-space: nowrap; /* Prevent text from wrapping */
             overflow: hidden; /* Hide overflowing text */
             animation: typing 5s steps(5, 10, 20, end);
@@ -54,7 +57,7 @@
             to { width: min-content; }
         }
 
-	nav ul {
+        nav ul {
             list-style-type: none;
             margin: 0;
             padding-right: 20px;
@@ -73,7 +76,7 @@
             font-weight: bold;
             font-size: 16px;
             padding: 10px;
-	    border-radius: 8px;
+            border-radius: 8px;
             transition: background-color 0.3s ease-in-out;
         }
 
@@ -81,9 +84,10 @@
             background-color: #999;
         }
 
-	main {
-	}
-        
+        main {
+            flex-grow: 1; /* Allow the main content to grow and take remaining space */
+        }
+
         .story-container_for_story_page {
             max-width: 800px;
             margin: 20px auto;
@@ -112,7 +116,36 @@
             padding: 20px;
         }
 
-        .story {
+         .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .flex-item {
+        flex: 0 0 45%; /* Adjusted width */
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+    }
+
+    .about-section,
+    .mission-section,
+    .essence-section,
+    .technology-section,
+    .community-section,
+    .education-section,
+    .journey-section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+	.story {
             border: 1px solid #ddd;
             background-color: #fff;
             padding: 20px;
@@ -154,7 +187,7 @@
 
         .centered-image {
             width: 80vw;
-	    height: 75vh;       /* Maintain the aspect ratio of the image */
+            height: 75vh;       /* Maintain the aspect ratio of the image */
             object-fit: fill;
             display: inline-block; /* Allow vertical alignment */
         }
@@ -182,16 +215,17 @@
         }
 
         footer {
-	    position: fixed;
-            background: -webkit-linear-gradient(0deg,rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-	    backdrop-filter: blur(5px);
-	    color: #fff;
+            background-color: #666; /* Match the color of the navbar */
+            color: #fff;
             text-align: center;
-	    bottom: 0;
-	    width: 100%;
+            padding: 20px;
+            font-size: 16px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Increased shadow for visibility */
+        }
+
+        footer:hover {
+            background-color: #555; /* Darken the color slightly on hover */
+            transition: background-color 0.3s ease-in-out;
         }
 
         /* Responsive Design */
@@ -206,44 +240,44 @@
             }
         }
 
-	.search {
-	    margin: 15px;
-	}
-
-	.search input {
-	    border-radius: 8px;
-	    color: #666;
-	    width: 300px;
-	    background-color: white;
-	}
-
-	.search button {
-	    color: #333;
-	    border-color: #333;
-            border-radius: 8px;
-	    background-color: #666;
+        .search {
+            margin: 15px;
         }
 
-	#search_not_found {
-	    font-size: 30px;
-	    font-weight: bold;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	}
+        .search input {
+            border-radius: 8px;
+            color: #666;
+            width: 300px;
+            background-color: white;
+        }
+
+        .search button {
+            color: #333;
+            border-color: #333;
+            border-radius: 8px;
+            background-color: #666;
+        }
+
+        #search_not_found {
+            font-size: 30px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
     {% load static %}
     <nav>
-	<div class="search">
-	    <input type="text" id="searchInput" placeholder="Search..." />
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Search..." />
             <button onclick="search()">Search</button>
         </div>
-	<div>
-	    <img src="{% static 'africanlibrary/images/book.svg' %}" alt="book-logo">
-	    <h1></h1>
-	</div>
+        <div>
+            <img src="{% static 'africanlibrary/images/book.svg' %}" alt="book-logo">
+            <h1></h1>
+        </div>
         <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'stories' %}">Stories</a></li>
@@ -252,9 +286,11 @@
     <main>
         {% block content %}{% endblock %}
     </main>
+    <footer>
+        &copy; 2023 African Library. All rights reserved.
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
             animateTyping();
         });
@@ -278,14 +314,9 @@
 
         function search() {
             var searchTerm = document.getElementById('searchInput').value;
-
             var url = '/search?query=' + encodeURIComponent(searchTerm);
-
             window.location.href = url;
         }
     </script>
 </body>
-<footer>
-    &copy; 2023 African Library. All rights reserved.
-</footer>
 </html>
