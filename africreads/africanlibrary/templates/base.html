@@ -20,7 +20,7 @@
         }
 
         nav {
-            background-color: #3498db;
+            background-color: #666;
             overflow: hidden;
             height: 60px; /* Adjusted height */
         }
@@ -40,7 +40,7 @@
 
         nav a {
             text-decoration: none;
-            color: #fff;
+            color: #333;
             font-weight: bold;
             font-size: 16px;
             padding: 10px;
@@ -48,7 +48,7 @@
         }
 
         nav a:hover {
-            background-color: #297fb8;
+            background-color: #999;
         }
         
         .story-container_for_story_page {
@@ -113,6 +113,18 @@
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 15px;
+        }
+        .image-container {
+            text-align: center; /* Center the image horizontally */
+            margin: 10px 0;     /* Add some margin for spacing */
+            background-color: #f5f5f5; 
+        }
+
+        .centered-image {
+            width: 80vw;
+	    height: 75vh;       /* Maintain the aspect ratio of the image */
+            object-fit: fill;
+            display: inline-block; /* Allow vertical alignment */
         }
 
         .read-more {
