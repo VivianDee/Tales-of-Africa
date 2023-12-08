@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="icon" type="image/webph" sizes="32x32" href="{% static 'africanlibrary/images/thumb_img2.webp' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tales of Africa</title>
     <!-- Your head content -->
     <style>
         body {
@@ -9,8 +15,11 @@
             margin: 0;
             background-color: #fff;
             padding: 2px;
-            background-repeat: no-repeat;
-            background-size: 100vw 100vh;
+	    background-repeat: no-repeat;
+            background-size: cover;
+	    object-fit: fill;
+            background-position: center;
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             min-height: 100vh; /* Ensure the content takes at least the full height of the viewport */
@@ -145,6 +154,21 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
+    .about-section:hover,
+    .mission-section:hover,
+    .essence-section:hover,
+    .technology-section:hover,
+    .community-section:hover,
+    .education-section:hover,
+    .journey-section:hover {
+            background: linear-gradient(to right, #F8F8FF, #FFFAFA);
+	    transition: background 0.5s ease;
+    }
+
+    .about-section {
+	    margin-top: 10px;
+    }
+
 	.story {
             border: 1px solid #ddd;
             background-color: #fff;
@@ -216,16 +240,12 @@
 
         footer {
             background-color: #666; /* Match the color of the navbar */
-            color: #fff;
+            color: #333;
             text-align: center;
             padding: 20px;
             font-size: 16px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Increased shadow for visibility */
-        }
-
-        footer:hover {
-            background-color: #555; /* Darken the color slightly on hover */
-            transition: background-color 0.3s ease-in-out;
+	    border-radius: 25px;
         }
 
         /* Responsive Design */
@@ -238,6 +258,58 @@
             .story {
                 width: 80%;
             }
+
+	    .logo img {
+		 transform: scale(1.7);
+		 padding-right: 15px;
+		 maigin: 0px;
+                 max-width: 100%;
+	    }
+
+	    .search {
+		    display: none;
+	    }
+
+	    nav {
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center; /* Center items on the screen */
+                height: auto; /* Let the content determine the height */
+		padding: 5px;
+	    }
+
+            nav ul {
+                text-align: center; /* Center list items */
+                padding: 5px 0; /* Add padding for better spacing */
+            }
+
+            nav li {
+               margin: 5px 0; /* Add spacing between items */
+           }
+
+           nav h1 {
+		   padding: 2px 0px 2px 2px;
+		   margin: 0;
+	   }
+
+           .flex-container{
+               padding: 0px;
+          }
+
+	  .flex-item {
+              flex: 0 0 85%; /* Adjusted width */
+              margin: 10px;
+              padding: 20px;
+	  }
+
+	  .search {
+		  transform: scaleY(1.3)
+	  }
+
+
+          body {
+		  background-size: cover;
+	  }
+
         }
 
         .search {
@@ -267,14 +339,13 @@
         }
     </style>
 </head>
-<body>
-    {% load static %}
+<body  style="background-image: url('{% static 'africanlibrary/images/thumb_img2.webp' %}')">
     <nav>
         <div class="search">
             <input type="text" id="searchInput" placeholder="Search..." />
             <button onclick="search()">Search</button>
         </div>
-        <div>
+        <div class="logo">
             <img src="{% static 'africanlibrary/images/book.svg' %}" alt="book-logo">
             <h1></h1>
         </div>
@@ -283,7 +354,7 @@
             <li><a href="{% url 'stories' %}">Stories</a></li>
         </ul>
     </nav>
-    <main>
+    <main> 
         {% block content %}{% endblock %}
     </main>
     <footer>
@@ -298,7 +369,7 @@
         function animateTyping() {
             const h1 = document.querySelector('nav h1');
             h1.innerHTML = ''; // Clear the text
-            const text = 'The Tales Of Africa'; // Replace with your desired text
+            const text = 'The Tales Of Africa '; // Replace with your desired text
             let charIndex = 0;
 
             function type() {
