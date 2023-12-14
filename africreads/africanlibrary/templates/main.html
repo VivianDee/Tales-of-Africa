@@ -6,9 +6,14 @@
 
 <section class="about-section"> 
  <div class="about-content">
+    {% if user.is_authenticated %}
+    <h1>Loggedin User: {{ user }}</h1>
+    {% else %}
+    <h1></h1>
+    {% endif %}
             <h1>About African Library</h1>
 	    <p><strong>Welcome to the African Library, a digital haven dedicated to preserving and celebrating the extraordinary tapestry of Africa's diverse cultures, histories, and narratives. Rooted in a profound appreciation for the richness and uniqueness of the continent, the African Library is more than just a digital repository; it is a dynamic platform committed to fostering cultural understanding, education, and connection.</strong></p>
-            <a href="{% url 'stories' %}" class="explore-button">Explore Stories</a>
+            <a href="{% url 'main:stories' %}" class="explore-button">Explore Stories</a>
         </div>
     </section>
 

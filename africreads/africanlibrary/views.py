@@ -1,11 +1,16 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Story
 from django.http import HttpResponse
 from django.contrib import messages
+from . import forms
 
 # Create your views here.
 def index(request):
-    return render(request, 'main.html')
+    user = request.user
+    context = {
+        'user' : user,
+    }
+    return render(request, 'main.html', context)
 
 def stories(request):
     """Gets all available stories and their contexts from the database and 
@@ -33,3 +38,12 @@ def search(request):
     if int(count) is 0:
         messages.info(request, 'Your search {} did not match any stories'.format(query))
     return render(request, 'stories.html', context)
+def register(request):
+	if request.method == "POST":
+		form = forms.NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			#login(request, user)
+			return redirect("main:index")
+	form = forms.NewUserForm
+	return render (request, "registration/register.html", context={"form":form})

@@ -350,8 +350,13 @@
             <h1></h1>
         </div>
         <ul>
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'stories' %}">Stories</a></li>
+            <li><a href="{% url 'main:index' %}">Home</a></li>
+            <li><a href="{% url 'main:stories' %}">Stories</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">LogOut</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
     <main> 

@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('africanlibrary.urls')),
+    path("auth/", include("django.contrib.auth.urls")),
     #path('stories/', include('africanlibrary.urls')),
     #path('stories/<uuid:story_id>/', include('africanlibrary.urls'))
 ]
