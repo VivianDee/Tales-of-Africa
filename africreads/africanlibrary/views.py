@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from . import forms
 from django.contrib.auth.models import User, AnonymousUser
-
+from .forms import StoryAddForm
 # Create your views here.
 """
 Get Authur
@@ -86,3 +86,19 @@ def register(request):
 			return redirect("main:index")
 	form = forms.NewUserForm
 	return render (request, "registration/register.html", context={"form":form})
+
+"""
+Add story
+"""
+def add_story(request):
+     story = request.POST.copy()
+     if request.user.is_authenticated:
+          story['author'] = request.user.id
+     else:
+           story['author'] = -1
+     request.POST = story
+     form = StoryAddForm(request.POST)
+     if form.is_valid():
+          form.save()
+     form = StoryAddForm()
+     return render(request, 'add_post.html', context={'form' : form})
