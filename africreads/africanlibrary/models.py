@@ -2,7 +2,6 @@ from django.db import models
 from uuid import uuid4
 # Create your models here.
 
-
 class Story(models.Model):
     '''
         This  is the Story model.It has everything a story needs
@@ -17,6 +16,7 @@ class Story(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     content = models.TextField()
+    author = models.IntegerField(default = -1)
 
     def __str__(self):
         return f"id: {self.id}, title: {self.title}, description: {self.description}"

@@ -3,8 +3,19 @@ from .models import Story
 from django.http import HttpResponse
 from django.contrib import messages
 from . import forms
+from django.contrib.auth.models import User, AnonymousUser
 
 # Create your views here.
+"""
+Get Authur
+"""
+def get_author(user_id):
+    author = User.objects.get(id=user_id)
+    return author
+
+"""
+Index page
+"""
 def index(request):
     user = request.user
     context = {
@@ -12,32 +23,60 @@ def index(request):
     }
     return render(request, 'main.html', context)
 
+"""
+Fetch all stories
+"""
 def stories(request):
     """Gets all available stories and their contexts from the database and 
     displays them on the page
     """
     stories = Story.objects.all()
+    # Convert numerics into author objects
+    for story in stories:
+        if story.author == -1:
+            story.author = AnonymousUser
+        else:
+             story.author = get_author(story.author)
     context = {'stories': stories}
     return render(request, 'stories.html', context)
 
+"""
+View a story
+"""
 def story_detail(request, story_id):
     """
         Gets a specific story by id
     """
     story = get_object_or_404(Story, id=story_id)
+    if story.author == -1:
+         story.author = AnonymousUser
+    else:
+         story.author = get_author(story.author)
+
     context = {'story': story}
     return render(request, 'story_detail.html', context)
-
+"""
+Search for stories
+"""
 def search(request):
     """ Searches the database for a story by name"""
     query = request.GET.get('query', '')
     stories = Story.objects.filter(title__icontains=query)
+    for story in stories:
+        if story.author == -1:
+            story.author = AnonymousUser
+        else:
+             story.author = get_author(story.author)
 
     context = {'stories': stories, 'query': query}
     count = len(stories.values())
     if int(count) is 0:
         messages.info(request, 'Your search {} did not match any stories'.format(query))
     return render(request, 'stories.html', context)
+
+"""
+Register new users
+"""    
 def register(request):
 	if request.method == "POST":
 		form = forms.NewUserForm(request.POST)
