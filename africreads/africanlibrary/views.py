@@ -100,5 +100,6 @@ def add_story(request):
      form = StoryAddForm(request.POST)
      if form.is_valid():
           form.save()
+          return redirect('main:stories')
      form = StoryAddForm()
      return render(request, 'add_post.html', context={'form' : form})

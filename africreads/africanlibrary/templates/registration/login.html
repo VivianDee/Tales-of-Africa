@@ -1,8 +1,13 @@
-<h1>Login</h1>
+{% extends 'base.html' %}
+{% load static %}
 
+{% block content %}
+<h1>Login</h1>
+<hr>
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Login">
 </form>
 <p>Don't have an account, <a href={% url "main:register"%}>Register here</a> instead.</p>
+{% endblock %}

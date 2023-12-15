@@ -338,6 +338,62 @@
             align-items: center;
         }
     </style>
+    <!--Stlyling forms -->
+    <style>
+        form {
+          background-color: #fff;
+          padding: 20px;
+          margin-left: 3vw;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          justify-content: center;
+          align-items: center;
+          max-width: 70%;
+          width: 100%;
+        }
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+        label {
+          display: block;
+          margin-bottom: 8px;
+          color: #333;
+        }
+    
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 16px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+    
+        input[type="submit"],button[type="submit"]  {
+          background-color: #4CAF50;
+          color: #fff;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+    
+        input[type="submit"]:hover, button[type="submit"]:hover {
+          background-color: #45a049;
+        }
+    
+        @media (max-width: 600px) {
+          form {
+            max-width: 100%;
+          }
+        }
+      </style>
 </head>
 <body  style="background-image: url('{% static 'africanlibrary/images/thumb_img2.webp' %}')">
     <nav>
