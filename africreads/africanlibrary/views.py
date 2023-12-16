@@ -91,7 +91,7 @@ def register(request):
 Add story
 """
 def add_story(request):
-     story = request.POST.copy()
+     story = request.POST.copy()   
      if request.user.is_authenticated:
           story['author'] = request.user.id
      else:
